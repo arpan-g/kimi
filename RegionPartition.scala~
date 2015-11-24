@@ -1,0 +1,10 @@
+import org.apache.spark.Partitioner
+
+class RegionPartition[V]()  extends Partitioner {
+
+   def numPartitions = 3
+  def getPartition(key: Any): Int = {
+    val k = key.asInstanceOf[Int]
+    return (k-1)/8
+  }
+}

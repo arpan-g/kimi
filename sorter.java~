@@ -1,0 +1,9 @@
+import java.util.Comparator;
+
+class LexicographicComparator implements Comparator<net.sf.samtools.SAMRecord> {
+    @Override
+public int compare(SAMRecord a,SAMRecord b) 
+	{
+        return a.mReferenceIndex - b.mReferenceIndex
+    }
+}

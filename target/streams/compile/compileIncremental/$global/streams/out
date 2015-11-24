@@ -1,0 +1,121 @@
+[0m[[0mdebug[0m] [0m[0m
+[0m[[0mdebug[0m] [0mInitial source changes: [0m
+[0m[[0mdebug[0m] [0m	removed:Set()[0m
+[0m[[0mdebug[0m] [0m	added: Set(/home/agovindaraju/Documents/big-data/spark-1.5.0-bin-hadoop2.4/Assignment3_files/template_code/src/main/scala/ExactPatitioner.scala, /home/agovindaraju/Documents/big-data/spark-1.5.0-bin-hadoop2.4/Assignment3_files/template_code/src/main/scala/DNASeqAnalyzer.scala, /home/agovindaraju/Documents/big-data/spark-1.5.0-bin-hadoop2.4/Assignment3_files/template_code/src/main/scala/BWAKeyValues.scala)[0m
+[0m[[0mdebug[0m] [0m	modified: Set()[0m
+[0m[[0mdebug[0m] [0mInvalidated products: Set()[0m
+[0m[[0mdebug[0m] [0mExternal API changes: API Changes: Set()[0m
+[0m[[0mdebug[0m] [0mModified binary dependencies: Set()[0m
+[0m[[0mdebug[0m] [0mInitial directly invalidated sources: Set(/home/agovindaraju/Documents/big-data/spark-1.5.0-bin-hadoop2.4/Assignment3_files/template_code/src/main/scala/ExactPatitioner.scala, /home/agovindaraju/Documents/big-data/spark-1.5.0-bin-hadoop2.4/Assignment3_files/template_code/src/main/scala/DNASeqAnalyzer.scala, /home/agovindaraju/Documents/big-data/spark-1.5.0-bin-hadoop2.4/Assignment3_files/template_code/src/main/scala/BWAKeyValues.scala)[0m
+[0m[[0mdebug[0m] [0m[0m
+[0m[[0mdebug[0m] [0mSources indirectly invalidated by:[0m
+[0m[[0mdebug[0m] [0m	product: Set()[0m
+[0m[[0mdebug[0m] [0m	binary dep: Set()[0m
+[0m[[0mdebug[0m] [0m	external source: Set()[0m
+[0m[[0mdebug[0m] [0mAll initially invalidated sources: Set(/home/agovindaraju/Documents/big-data/spark-1.5.0-bin-hadoop2.4/Assignment3_files/template_code/src/main/scala/ExactPatitioner.scala, /home/agovindaraju/Documents/big-data/spark-1.5.0-bin-hadoop2.4/Assignment3_files/template_code/src/main/scala/DNASeqAnalyzer.scala, /home/agovindaraju/Documents/big-data/spark-1.5.0-bin-hadoop2.4/Assignment3_files/template_code/src/main/scala/BWAKeyValues.scala)[0m
+[0m[[0mdebug[0m] [0mRecompiling all 3 sources: invalidated sources (3) exceeded 50.0% of all sources[0m
+[0m[[0minfo[0m] [0mCompiling 3 Scala sources to /home/agovindaraju/Documents/big-data/spark-1.5.0-bin-hadoop2.4/Assignment3_files/template_code/src/main/scala/target/scala-2.10/classes...[0m
+[0m[[0mdebug[0m] [0mGetting compiler-interface from component compiler for Scala 2.10.5[0m
+[0m[[0mdebug[0m] [0mGetting compiler-interface from component compiler for Scala 2.10.5[0m
+[0m[[0mdebug[0m] [0mRunning cached compiler eaaa6a4, interfacing (CompilerInterface) with Scala compiler version 2.10.5[0m
+[0m[[0mdebug[0m] [0mCalling Scala compiler with arguments  (CompilerInterface):[0m
+[0m[[0mdebug[0m] [0m	-bootclasspath[0m
+[0m[[0mdebug[0m] [0m	/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.65-2.5.1.2.fc20.ppc64/jre/lib/resources.jar:/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.65-2.5.1.2.fc20.ppc64/jre/lib/rt.jar:/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.65-2.5.1.2.fc20.ppc64/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.65-2.5.1.2.fc20.ppc64/jre/lib/jsse.jar:/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.65-2.5.1.2.fc20.ppc64/jre/lib/jce.jar:/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.65-2.5.1.2.fc20.ppc64/jre/lib/charsets.jar:/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.65-2.5.1.2.fc20.ppc64/jre/lib/rhino.jar:/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.65-2.5.1.2.fc20.ppc64/jre/lib/jfr.jar:/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.65-2.5.1.2.fc20.ppc64/jre/classes:/home/agovindaraju/.sbt/boot/scala-2.10.5/lib/scala-library.jar[0m
+[0m[[0mdebug[0m] [0m	-classpath[0m
+[0m[[0mdebug[0m] [0m	/home/agovindaraju/Documents/big-data/spark-1.5.0-bin-hadoop2.4/Assignment3_files/template_code/src/main/scala/target/scala-2.10/classes[0m
+[0m[[31merror[0m] [0m/home/agovindaraju/Documents/big-data/spark-1.5.0-bin-hadoop2.4/Assignment3_files/template_code/src/main/scala/BWAKeyValues.scala:5: not found: object net[0m
+[0m[[31merror[0m] [0mimport net.sf.samtools.util.BufferedLineReader[0m
+[0m[[31merror[0m] [0m       ^[0m
+[0m[[31merror[0m] [0m/home/agovindaraju/Documents/big-data/spark-1.5.0-bin-hadoop2.4/Assignment3_files/template_code/src/main/scala/BWAKeyValues.scala:6: not found: object net[0m
+[0m[[31merror[0m] [0mimport net.sf.samtools._[0m
+[0m[[31merror[0m] [0m       ^[0m
+[0m[[31merror[0m] [0m/home/agovindaraju/Documents/big-data/spark-1.5.0-bin-hadoop2.4/Assignment3_files/template_code/src/main/scala/BWAKeyValues.scala:7: not found: object tudelft[0m
+[0m[[31merror[0m] [0mimport tudelft.utils._[0m
+[0m[[31merror[0m] [0m       ^[0m
+[0m[[31merror[0m] [0m/home/agovindaraju/Documents/big-data/spark-1.5.0-bin-hadoop2.4/Assignment3_files/template_code/src/main/scala/BWAKeyValues.scala:11: not found: type SAMRecord[0m
+[0m[[31merror[0m] [0m	val keyValues = scala.collection.mutable.ArrayBuffer.empty[(Int, SAMRecord)][0m
+[0m[[31merror[0m] [0m	                                                                 ^[0m
+[0m[[31merror[0m] [0m/home/agovindaraju/Documents/big-data/spark-1.5.0-bin-hadoop2.4/Assignment3_files/template_code/src/main/scala/BWAKeyValues.scala:14: not found: value SAMFileReader[0m
+[0m[[31merror[0m] [0m    val validationStringency: SAMFileReader.ValidationStringency = SAMFileReader.ValidationStringency.LENIENT;[0m
+[0m[[31merror[0m] [0m                              ^[0m
+[0m[[31merror[0m] [0m/home/agovindaraju/Documents/big-data/spark-1.5.0-bin-hadoop2.4/Assignment3_files/template_code/src/main/scala/BWAKeyValues.scala:14: not found: value SAMFileReader[0m
+[0m[[31merror[0m] [0m    val validationStringency: SAMFileReader.ValidationStringency = SAMFileReader.ValidationStringency.LENIENT;[0m
+[0m[[31merror[0m] [0m                                                                   ^[0m
+[0m[[31merror[0m] [0m/home/agovindaraju/Documents/big-data/spark-1.5.0-bin-hadoop2.4/Assignment3_files/template_code/src/main/scala/BWAKeyValues.scala:15: not found: type BufferedLineReader[0m
+[0m[[31merror[0m] [0m    val mReader = new BufferedLineReader(is);[0m
+[0m[[31merror[0m] [0m                      ^[0m
+[0m[[31merror[0m] [0m/home/agovindaraju/Documents/big-data/spark-1.5.0-bin-hadoop2.4/Assignment3_files/template_code/src/main/scala/BWAKeyValues.scala:16: not found: type DefaultSAMRecordFactory[0m
+[0m[[31merror[0m] [0m    val samRecordFactory = new DefaultSAMRecordFactory();[0m
+[0m[[31merror[0m] [0m                               ^[0m
+[0m[[31merror[0m] [0m/home/agovindaraju/Documents/big-data/spark-1.5.0-bin-hadoop2.4/Assignment3_files/template_code/src/main/scala/BWAKeyValues.scala:19: not found: type SAMRecord[0m
+[0m[[31merror[0m] [0m	def getKeyValuePairs() : Array[(Int, SAMRecord)] = [0m
+[0m[[31merror[0m] [0m	                                     ^[0m
+[0m[[31merror[0m] [0m/home/agovindaraju/Documents/big-data/spark-1.5.0-bin-hadoop2.4/Assignment3_files/template_code/src/main/scala/BWAKeyValues.scala:24: not found: type SAMRecord[0m
+[0m[[31merror[0m] [0m    def writePairedSAMRecord(sam: SAMRecord) : Integer = [0m
+[0m[[31merror[0m] [0m                                  ^[0m
+[0m[[31merror[0m] [0m/home/agovindaraju/Documents/big-data/spark-1.5.0-bin-hadoop2.4/Assignment3_files/template_code/src/main/scala/BWAKeyValues.scala:49: not found: type SAMFileReader[0m
+[0m[[31merror[0m] [0m		var mParentReader: SAMFileReader = null[0m
+[0m[[31merror[0m] [0m		                   ^[0m
+[0m[[31merror[0m] [0m/home/agovindaraju/Documents/big-data/spark-1.5.0-bin-hadoop2.4/Assignment3_files/template_code/src/main/scala/BWAKeyValues.scala:50: not found: type SAMTextHeaderCodec[0m
+[0m[[31merror[0m] [0m        val headerCodec = new SAMTextHeaderCodec();[0m
+[0m[[31merror[0m] [0m                              ^[0m
+[0m[[31merror[0m] [0m/home/agovindaraju/Documents/big-data/spark-1.5.0-bin-hadoop2.4/Assignment3_files/template_code/src/main/scala/BWAKeyValues.scala:53: not found: type SAMLineParser[0m
+[0m[[31merror[0m] [0m        val parser = new SAMLineParser(samRecordFactory, validationStringency, mFileHeader, mParentReader, mFile)[0m
+[0m[[31merror[0m] [0m                         ^[0m
+[0m[[31merror[0m] [0m/home/agovindaraju/Documents/big-data/spark-1.5.0-bin-hadoop2.4/Assignment3_files/template_code/src/main/scala/DNASeqAnalyzer.scala:1: object apache is not a member of package org[0m
+[0m[[31merror[0m] [0mimport org.apache.spark.SparkContext[0m
+[0m[[31merror[0m] [0m           ^[0m
+[0m[[31merror[0m] [0m/home/agovindaraju/Documents/big-data/spark-1.5.0-bin-hadoop2.4/Assignment3_files/template_code/src/main/scala/DNASeqAnalyzer.scala:2: object apache is not a member of package org[0m
+[0m[[31merror[0m] [0mimport org.apache.spark.SparkContext._[0m
+[0m[[31merror[0m] [0m           ^[0m
+[0m[[31merror[0m] [0m/home/agovindaraju/Documents/big-data/spark-1.5.0-bin-hadoop2.4/Assignment3_files/template_code/src/main/scala/DNASeqAnalyzer.scala:3: object apache is not a member of package org[0m
+[0m[[31merror[0m] [0mimport org.apache.spark.SparkConf[0m
+[0m[[31merror[0m] [0m           ^[0m
+[0m[[31merror[0m] [0m/home/agovindaraju/Documents/big-data/spark-1.5.0-bin-hadoop2.4/Assignment3_files/template_code/src/main/scala/DNASeqAnalyzer.scala:4: object apache is not a member of package org[0m
+[0m[[31merror[0m] [0mimport org.apache.spark.Partitioner[0m
+[0m[[31merror[0m] [0m           ^[0m
+[0m[[31merror[0m] [0m/home/agovindaraju/Documents/big-data/spark-1.5.0-bin-hadoop2.4/Assignment3_files/template_code/src/main/scala/DNASeqAnalyzer.scala:18: not found: object net[0m
+[0m[[31merror[0m] [0mimport net.sf.samtools._[0m
+[0m[[31merror[0m] [0m       ^[0m
+[0m[[31merror[0m] [0m/home/agovindaraju/Documents/big-data/spark-1.5.0-bin-hadoop2.4/Assignment3_files/template_code/src/main/scala/DNASeqAnalyzer.scala:20: not found: object tudelft[0m
+[0m[[31merror[0m] [0mimport tudelft.utils.ChromosomeRange[0m
+[0m[[31merror[0m] [0m       ^[0m
+[0m[[31merror[0m] [0m/home/agovindaraju/Documents/big-data/spark-1.5.0-bin-hadoop2.4/Assignment3_files/template_code/src/main/scala/DNASeqAnalyzer.scala:21: not found: object tudelft[0m
+[0m[[31merror[0m] [0mimport tudelft.utils.DictParser[0m
+[0m[[31merror[0m] [0m       ^[0m
+[0m[[31merror[0m] [0m/home/agovindaraju/Documents/big-data/spark-1.5.0-bin-hadoop2.4/Assignment3_files/template_code/src/main/scala/DNASeqAnalyzer.scala:22: not found: object tudelft[0m
+[0m[[31merror[0m] [0mimport tudelft.utils.Configuration[0m
+[0m[[31merror[0m] [0m       ^[0m
+[0m[[31merror[0m] [0m/home/agovindaraju/Documents/big-data/spark-1.5.0-bin-hadoop2.4/Assignment3_files/template_code/src/main/scala/DNASeqAnalyzer.scala:23: not found: object tudelft[0m
+[0m[[31merror[0m] [0mimport tudelft.utils.SAMRecordIterator[0m
+[0m[[31merror[0m] [0m       ^[0m
+[0m[[31merror[0m] [0m/home/agovindaraju/Documents/big-data/spark-1.5.0-bin-hadoop2.4/Assignment3_files/template_code/src/main/scala/DNASeqAnalyzer.scala:25: object apache is not a member of package org[0m
+[0m[[31merror[0m] [0mimport org.apache.commons.lang3.exception.ExceptionUtils[0m
+[0m[[31merror[0m] [0m           ^[0m
+[0m[[31merror[0m] [0m/home/agovindaraju/Documents/big-data/spark-1.5.0-bin-hadoop2.4/Assignment3_files/template_code/src/main/scala/DNASeqAnalyzer.scala:26: object apache is not a member of package org[0m
+[0m[[31merror[0m] [0mimport org.apache.spark.storage.StorageLevel._[0m
+[0m[[31merror[0m] [0m           ^[0m
+[0m[[31merror[0m] [0m/home/agovindaraju/Documents/big-data/spark-1.5.0-bin-hadoop2.4/Assignment3_files/template_code/src/main/scala/DNASeqAnalyzer.scala:27: object apache is not a member of package org[0m
+[0m[[31merror[0m] [0mimport org.apache.spark.HashPartitioner[0m
+[0m[[31merror[0m] [0m           ^[0m
+[0m[[31merror[0m] [0m/home/agovindaraju/Documents/big-data/spark-1.5.0-bin-hadoop2.4/Assignment3_files/template_code/src/main/scala/DNASeqAnalyzer.scala:55: not found: type SAMRecord[0m
+[0m[[31merror[0m] [0m	var kvPairs = Array[(Int, SAMRecord)]()[0m
+[0m[[31merror[0m] [0m	                          ^[0m
+[0m[[31merror[0m] [0m/home/agovindaraju/Documents/big-data/spark-1.5.0-bin-hadoop2.4/Assignment3_files/template_code/src/main/scala/DNASeqAnalyzer.scala:111: not found: type Configuration[0m
+[0m[[31merror[0m] [0m	val config = new Configuration()[0m
+[0m[[31merror[0m] [0m	                 ^[0m
+[0m[[31merror[0m] [0m/home/agovindaraju/Documents/big-data/spark-1.5.0-bin-hadoop2.4/Assignment3_files/template_code/src/main/scala/DNASeqAnalyzer.scala:114: not found: type SparkConf[0m
+[0m[[31merror[0m] [0m	val conf = new SparkConf().setAppName("DNASeqAnalyzer")[0m
+[0m[[31merror[0m] [0m	               ^[0m
+[0m[[31merror[0m] [0m/home/agovindaraju/Documents/big-data/spark-1.5.0-bin-hadoop2.4/Assignment3_files/template_code/src/main/scala/DNASeqAnalyzer.scala:122: not found: type SparkContext[0m
+[0m[[31merror[0m] [0m	val sc = new SparkContext(conf)[0m
+[0m[[31merror[0m] [0m	             ^[0m
+[0m[[31merror[0m] [0m/home/agovindaraju/Documents/big-data/spark-1.5.0-bin-hadoop2.4/Assignment3_files/template_code/src/main/scala/ExactPatitioner.scala:1: object apache is not a member of package org[0m
+[0m[[31merror[0m] [0mimport org.apache.spark.Partitioner[0m
+[0m[[31merror[0m] [0m           ^[0m
+[0m[[31merror[0m] [0m/home/agovindaraju/Documents/big-data/spark-1.5.0-bin-hadoop2.4/Assignment3_files/template_code/src/main/scala/ExactPatitioner.scala:3: not found: type Partitioner[0m
+[0m[[31merror[0m] [0mclass ExactPartitioner[V](partitions: Int)  extends Partitioner {[0m
+[0m[[31merror[0m] [0m                                                    ^[0m
+[0m[[31merror[0m] [0m31 errors found[0m
+[0m[[0mdebug[0m] [0mCompilation failed (CompilerInterface)[0m
+[0m[[31merror[0m] [0m(compile:[31mcompileIncremental[0m) Compilation failed[0m

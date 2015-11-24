@@ -1,0 +1,10 @@
+import java.util.Comparator;
+import java.net._;
+
+class SAMRecordComparator implements Comparator<net.sf.samtools.SAMRecord> {
+    @Override
+public int compare(SAMRecord a,SAMRecord b) 
+	{
+        return a.mReferenceIndex - b.mReferenceIndex;
+    }
+}
