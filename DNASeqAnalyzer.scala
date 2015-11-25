@@ -62,7 +62,7 @@ def bwaRun (files:List[File],sc:SparkContext,config: Configuration) :org.apache.
 		}
 	}
 	val fileRDD = sc.parallelize(fileList,config.getNumInstances.toInt)
-	val exitValue = fileRDD.mapPartitions({iter => for(i<-iter) yield createSamFile(i)},true)
+	val exitValue = fileRDD.mapPartitions({iter => for(i<-iter) yield createSamFile(i,config)},true)
 	exitValue.take(20).foreach(println)
 	val resFiles = getListOfFiles("/data/result")
 	val resRDD = sc.parallelize(resFiles,config.getNumInstances.toInt)
@@ -98,9 +98,9 @@ def createBWAKVPairs(file:File):Array[(Int, SAMRecord)] =
 	return kvPairs
 }
 
-def createSamFile(file:File):String=
+def createSamFile(file:File,config: Configuration):String=
 {
-val cmd = Seq("/data/spark/tools/bwa","mem","-p", "-t","8","/data/spark/ref/ucsc.hg19.fasta",file.getAbsolutePath)
+val cmd = Seq(config.getToolsFolder+"bwa","mem","-p", "-t",config.getNumInstances,config.getRefFolder+RefFileName,file.getAbsolutePath)
 	cmd #> new File("/data/result/"+file.getName+".sam") !
 	
 return file.getName
@@ -157,8 +157,13 @@ val pic10 = Seq("java", MemString,"-jar",toolsFolder+"/GenomeAnalysisTK.jar", "-
 	//val rm4 = Seq(rm,tmpFolder+"/region"+chrRegion+"-3.bam", tmpFolder+"/region"+chrRegion+"-3.bai", tmpFolder+"/bed"+chrRegion+".bed") !
 	// return the content of the vcf file produced by the haplotype caller.
 	//	Return those in the form of <Chromsome number, <Chromosome Position, line>>*/
-
-	return pic10
+	val rm1 = Seq("rm",tmpFolder+"/region"+chrRegion+"-p1.bam",tmpFolder+"/region"+chrRegion+"-p2.bam",tmpFolder+"/region"+chrRegion+"-p3.bam",tmpFolder+"/region"+chrRegion+"-p3-metrics.txt") !
+	val rm2 = Seq("rm",tmpFolder+"/tmp"+chrRegion+".bed") !
+	val rm3 = Seq("rm",tmpFolder+"/region"+chrRegion+".bam",tmpFolder+"/region"+chrRegion+".bai",tmpFolder+"/region"+chrRegion+".intervals") !
+	val rm4 = Seq("rm",tmpFolder+"/region"+chrRegion+"-2.bam", tmpFolder+"/region"+chrRegion+"-2.bai", tmpFolder+"/region"+chrRegion+".table") !
+	val rm5 = Seq("rm",tmpFolder+"/region"+chrRegion+"-3.bam", tmpFolder+"/region"+chrRegion+"-3.bai", tmpFolder+"/bed"+chrRegion+".bed") !
+	
+	pic10
 }
 
 
@@ -167,26 +172,26 @@ def interleave(input:Iterator[(Long, (List[String], List[String]))]): Iterator[S
  var res = List[String]()
 while(input.hasNext){	
   val next = input.next
-  val aiter = next._2._1.toIterator
-  val biter = next._2._2.toIterator
+  val aiter = next._2._1.toIterator  //fast1q
+  val biter = next._2._2.toIterator  //fast2q
  
   while (aiter.hasNext && biter.hasNext)
   { 
-    res ::= aiter.next
- if(aiter.hasNext)	
-    res ::= aiter.next
- if(aiter.hasNext)
-    res ::= aiter.next
- if(aiter.hasNext)
-    res ::= aiter.next
- if(biter.hasNext)
-    res ::= biter.next
- if(biter.hasNext)
-    res ::= biter.next 
- if(biter.hasNext)
-    res ::= biter.next 
- if(biter.hasNext)
-    res ::= biter.next 
+    	   res ::= aiter.next
+ 	if(aiter.hasNext) 	//safety to check	
+    	    res ::= aiter.next
+ 	if(aiter.hasNext)
+    	    res ::= aiter.next
+	 if(aiter.hasNext)
+	    res ::= aiter.next
+	 if(biter.hasNext)
+	    res ::= biter.next
+	 if(biter.hasNext)
+	    res ::= biter.next 
+	 if(biter.hasNext)
+	    res ::= biter.next 
+	 if(biter.hasNext)
+	    res ::= biter.next 
   }
 }
   res.toIterator
@@ -206,18 +211,20 @@ def main(args: Array[String])
 	//conf.set("spark.shuffle.blockTransferService", "nio") 
 	
 	val sc = new SparkContext(conf)
+	//interleave data
 	val fast1q = sc.textFile("/data/spark/fastq/fastq1.fq")
 	val fast2q = sc.textFile("/data/spark/fastq/fastq2.fq")
-	val fast1q_with_index_reduceByKey = fast1q.zipWithIndex().map{case(s,index)=>(index/4,List(s))}
-	val fast1q_with_index = fast1q_with_index_reduceByKey.reduceByKey((a,b)=>(b:::a))
-	val fast2q_with_index_reduceByKey = fast2q.zipWithIndex().map{case(s,index)=>(index/4,List(s))}
-	val fast2q_with_index = fast2q_with_index_reduceByKey.reduceByKey((a,b)=>(b:::a))
-	val joined_map = fast1q_with_index.join(fast2q_with_index,new ExactPartitioner(config.getNumInstances.toInt))
+	val fast1q_with_index= fast1q.zipWithIndex().map{case(s,index)=>(index/4,List(s))}
+	val fast1q_with_index_reduceByKey = fast1q_with_index.reduceByKey((a,b)=>(b:::a))
+	val fast2q_with_index = fast2q.zipWithIndex().map{case(s,index)=>(index/4,List(s))}
+	val fast2q_with_index_reduceByKey = fast2q_with_index.reduceByKey((a,b)=>(b:::a))
+	val joined_map = fast1q_with_index_reduceByKey.join(fast2q_with_index_reduceByKey,new ExactPartitioner(config.getNumInstances.toInt))
 	val joinpartition = joined_map.mapPartitions(iter=>interleave(iter))
-	println(joinpartition.count)
 	joinpartition.saveAsTextFile(config.getInputFolder)
-	val files = getListOfFiles(config.getInputFolder)
-	val kvPairs = bwaRun (files,sc,config)
+	// bwa tasks
+	val interleavedFiles = getListOfFiles(config.getInputFolder)
+	val kvPairs = bwaRun (interleavedFiles,sc,config)
+	// variant call
 	val kvChrRegion = kvPairs.map(a=>((a._1-1)/3,a._2))
 	val kvGroup =	kvChrRegion.groupByKey(new RegionPartition())
 	val kvPartition = kvGroup.mapPartitions({iter => for(i<-iter) yield variantCall(i._1,i._2.toArray,config)},true)
@@ -246,20 +253,19 @@ def main(args: Array[String])
 	val filterOut = filterOutTemp.filter(!_.contains("#"))
 	filterOut.count
 	val splitMap=filterOut.map(a=>(a.split("\t"),a))
-	val abc = splitMap.map(a=>(a._1(0).replaceAll("chr","").replaceAll("X","23").toInt->(a._1(1).toInt,a._2)))	 
-	val a = abc.sortByKey(true)
-	a.count
-	a.take(20).foreach(println)
-	val pw = new PrintWriter(new File("/home/agovindaraju/Documents/big-data/spark-1.5.0-bin-hadoop2.4/samRecord.vcf"))
+	val splitMapFilter = splitMap.map(a=>(a._1(0).replaceAll("chr","").replaceAll("X","23").toInt->(a._1(1).toInt,a._2)))	 
+	val splitMapSort = splitMapFilter.sortByKey(true)
+	
+	val pw = new PrintWriter(new File(config.getOutputFolder+"output.vcf"))
 	pw.write("#CHROM  POS     ID      REF     ALT     QUAL    FILTER  INFO    FORMAT  ls\n")
-	a.collect().foreach(ln=>pw.write(ln._2._2+"\n"))
+	splitMapSort.collect().foreach(ln=>pw.write(ln._2._2+"\n"))
 	pw.close()
-// Rest of the code goes here
+
 }
 //////////////////////////////////////////////////////////////////////////////
 } // End of Class definition
 
-// /data/spark/tools/bwa mem -p -t 8 /data/spark/ref/ucsc.hg19.fasta
+
 
 
 
